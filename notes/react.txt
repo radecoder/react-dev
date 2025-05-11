@@ -1,0 +1,14 @@
+📌 React ?
+   - react is Javascript library for building user interfaces
+   - because react uses js in the browser to update page (like click on tab and see video without reloading in an app ) 
+     and user interface we see on that page without reloading the page,
+   - js controls UI & content
+📌 why to use React ? 
+   -> it offers a simple mental model
+📌 But then why we need React library as everything done by js ?
+   - because complex js code quickly become error prone
+   - complex code hard to maintain or edit   
+   
+🔹 CodeSandbox ?
+In Browser Cloud code editor and devlopment environment help in working on react project without 
+installing any software or tools.   
