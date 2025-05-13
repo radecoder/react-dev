@@ -28,7 +28,8 @@ React ➡️ Good for building large, interactive, and scalable apps.
 Vanilla JS ➡️ Good for quick, simple websites or scripts.
 
 📌What is the DOM? (Document Object Model)
-The Document Object Model (DOM) is a programming interface that represents the structure of an HTML or XML document as a tree of objects. It allows you to access, modify, and manipulate the content, structure, and styles of a webpage.
+The Document Object Model (DOM) is a programming interface that represents the structure of an HTML or XML document as a tree of objects. 
+It allows you to access, modify, and manipulate the content, structure, and styles of a webpage.
 
 🔍 Visual Representation
 html
@@ -44,6 +45,7 @@ Edit
     <p>This is a paragraph.</p>
   </body>
 </html>
+
 When the browser loads this HTML, it creates a DOM tree like this:
 
 css
@@ -58,6 +60,90 @@ Document
 │       ├── h1 → "Hello World!"
 │       └── p → "This is a paragraph."
 
-📌 Why do we need special project setup for react ?
-because while writing react code we use JSX (html in js) which does not work in browser ,
-so it transform & optimized to code that run in browser (js code without JSX) ...handle by build tool eg. Vite 
+📌 Why do we need special project setup for react ?-
+- because while writing react code we use JSX (html in js) which does not work in browser , React project uses build process,
+- so it transform & optimized to code that run in browser (js code without JSX) ...handle by build tool eg. Vite 
+- It transform using "reac-script" dependency
+
+📌 Why React project uses build process?
+1. Raw, unprocessed React code won't execute in browser, JSX is not a default js feature.
+2. The code would not be optimised for production (eg. minified)  minification means names of var or fun are shortened 
+   to reduce amount of js code that's served to user.
+3. React project uses build process that transform code eg. create-react-app ,vite provide such build process
+   
+📌 Javascript Can be Executed In many Environments
+1. In the Browser -> js code can be included in any website and the code then executes inside the browser.
+2. On any Computer -> By Nodejs or Deno, js code can be executed outside of browser too, the code then executes directly on the machine.
+3. On Mobile Devices-> with React native, we can build mobile appson js , the code then executes on the mobile device.
+
+📌Pakage.json -> This File list all the dependencies of the project, and libraries used by project
+
+📌 type="module" attribute
+- Split your JavaScript into smaller, reusable files.
+- Import and export functions, objects, or variables between files.
+- <script type="module"> is automatically deferred, meaning it loads after the HTML is parsed. No need to add defer or async — it's built-in.
+
+      //Old way: everything in one file 
+<script src="app.js"></script>
+
+    //Modern way: split into smaller pieces 
+<script type="module" src="main.js"></script>
+
+main.js:       import { sayHello } from './greet.js';
+               sayHello();
+			   
+greet.js:     export function sayHello() {
+              console.log("Hello from the module!");
+              }
+
+📌Import & Export -> If variable should also be available outside of that file(like if it's in util.js), so we need to export it, 
+ by adding export keyword in front of it.
+ eg.  export let apiKey ="sahil";   Now we can import it in app.js   eg. import{apiKey} from "./util.js" 
+ and we can console.log(apiKey);
+ - Another way to export;  export default "sahil";   //in one file we can only add one export default 
+ - Now Import;  import anyName from "./util.js"; 
+                console.log(anyName);
+ - import * as util from "./util.js";   //to import all export variables 
+   console.log(util.anyName) 
+   
+📌 DataTypes in js
+1. String 2. Number 3. Boolean 4. Null & Undefind
+
+📌 var, let and const
+🔹 var (Old way of creating variables)
+- It's like writing on a whiteboard — anyone can change it at any time.
+- It ignores block boundaries (like if or for), so it can be accessed outside too.
+- It's old and sometimes causes bugs.
+eg.
+if (true) {
+    var name = "Sahil";
+}
+console.log(name); // ✅ "Sahil" (it works even outside the if block)
+
+🔹 let (New way of creating variables)
+- It's like writing inside a notebook — only visible inside that notebook (block).
+- You can change its value, but only inside its block.
+eg.
+if (true) {
+    let age = 22;
+    console.log(age); // ✅ 22
+}
+console.log(age); // ❌ Error! age is not visible here
+
+🔹 const (New way for constants)
+- It's like writing with a permanent marker — you can't change it once it's written.
+- It must be given a value right away.
+eg.
+const birthYear = 2001;
+birthYear = 2002; // ❌ Error! You can't change it
+
+⚡ Summary
+| Feature           | `var`           | `let`               | `const`                 |
+| ----------------- | --------------- | ------------------- | ----------------------- |
+| Scope             | Function-scoped | Block-scoped        | Block-scoped            |
+| Hoisting          | Yes             | Yes (uninitialized) | Yes (uninitialized)     |
+| Redeclaration     | Yes             | No                  | No                      |
+| Reassignment      | Yes             | Yes                 | No                      |
+| Mutable (Objects) | Yes             | Yes                 | Yes (object properties) |
+
+📌
