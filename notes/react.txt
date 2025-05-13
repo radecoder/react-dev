@@ -146,4 +146,69 @@ birthYear = 2002; // ❌ Error! You can't change it
 | Reassignment      | Yes             | Yes                 | No                      |
 | Mutable (Objects) | Yes             | Yes                 | Yes (object properties) |
 
-📌
+📌function -> is defining some code that doesn't execute immediately, but when we call (invoke) it then it execute.
+   - It can be call multiple times.
+   - It can take some input values called parameters as many as we want.
+   - Parameters are then available inside func.
+  function greet(userName , message){      //parameters
+   console.log(userName);               //func code
+   console.log(message); 
+  }
+  greet("Sahil", "Hello!");  //func call
+  
+ 🔹 This func return something , i.e why we store in variable (const greeting1)
+  function createGreeting(userName, message = "Hello!") {
+   console.log(userName);
+   console.log(message);
+   return "Hi, I am " + userName + ". " + message;     //with return keyword
+  }
+   const greeting1 = createGreeting("Max");
+   console.log(greeting1);
+   const greeting2 = createGreeting("Manuel", "Hello, what's up?");
+   console.log(greeting2);
+  
+ 🔹 Anonymous function-> (which don't have name) can also be define with function keyword
+    function(){
+	 console.log("Sahil");
+	}
+	or 
+	export default function(){
+	 console.log("Sahil");
+	}
+	
+	or using Arrow function
+	export default(userName,message)=>{         //omit the function keyword
+	 console.log("Sahil");
+	 return userName+message;
+	}
+	
+📌 Arrow Function: 
+     
+  export default(userName,message)=>{         //omit the function keyword
+	 console.log("Sahil");
+	 return userName+message;
+  }
+  
+1) Omitting parameter list parentheses if (exactly one parameter)
+  Instead of            (userName) => { ... }
+  you could write       userName => { ... }
+  
+  would be invalid       userName, userAge => { ... }  
+  is correct)!          ((userName, userAge) => { ... } 
+
+2) Omitting function body curly braces
+   Instead of
+
+           number => { 
+            return number * 3;
+           }
+   you could write       number => number * 3;
+
+- The following code would be invalid:
+
+  number => return number * 3; // invalid because return keyword must also be omitted!
+  number => if (number === 2) { return 5 }; // invalid because if statements can't be returned
+
+3) Special case: Just returning an object
+   number => { age: number }; // trying to return an object
+   number => ({ age: number }); // wrapping the object in extra parentheses
