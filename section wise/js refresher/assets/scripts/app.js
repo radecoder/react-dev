@@ -29,9 +29,6 @@
 //   return userName + message;
 // };
 
-export default function(){
-	 console.log("Sahil");
-}
 
 // const user = {
 //   name: "Max",
@@ -60,11 +57,11 @@ export default function(){
 // console.log(user1);
 // user1.greet();
 
-// const hobbies = ["Sports", "Cooking", "Reading"];
-// console.log(hobbies[0]);
+const hobbies = ["Sports", "Cooking", "Reading"];
+console.log(hobbies[0]);
 
-// hobbies.push("Working");
-// console.log(hobbies);
+hobbies.push("Working");
+console.log(hobbies);
 
 // const index = hobbies.findIndex((item) => item === "Sports");
 

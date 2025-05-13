@@ -212,3 +212,107 @@ birthYear = 2002; // ❌ Error! You can't change it
 3) Special case: Just returning an object
    number => { age: number }; // trying to return an object
    number => ({ age: number }); // wrapping the object in extra parentheses
+   
+📌 Objects -> objects in js can be used to grp multiple values together, 
+              object is a collection of key-value pairs. Each key is a string (also called a property), 
+			  and each value can be any data type, including other objects or functions.
+
+eg, const userName = "Max";
+    const userAge = 34;        //so we can grp these values
+	
+eg const user = {
+     name : "Max";         //key : value pairs
+	 age : 34; 
+	 }
+   console.log(user); or
+   console.log(user.name); or  // . is the key to access the values in object
+   
+🔹 Objects can also store functions (Methods)
+eg const user = {
+     nam: "Max",         //key : value pairs
+	 age : 34,
+	 greet() {
+      console.log("Hello!");
+      console.log(this.age);   // in func that belong to an object, we can access properties using "this" keyword.
+     }
+   };
+   console.log(user); or
+   console.log(user.name); or  // . is the key to access the values in object
+   user.greet();     
+                       o/p - Max
+                           Hello!
+                             34
+🔹 Class Blueprint
+  	class User {
+    constructor(name, age) {
+    this.name = name;
+    this.age = age;
+    }
+    greet() {
+    console.log("Hi!");
+    }
+   }
+    // creating object using blueprint
+   const user1 = new User("Manuel", 35);      o/p : User { name: 'Manuel', age: 35 }
+   console.log(user1);                              Hi!
+   user1.greet();
+   
+🔹From chatgpt
+
+1. Using Object Literal Notation:
+const person = {
+    name: "Sahil",
+    age: 22,
+    greet: function() {
+        console.log("Hello, my name is " + this.name);
+    }
+};
+
+console.log(person.name);  // Output: Sahil
+person.greet();            // Output: Hello, my name is Sahil
+
+2. Using the new Object() Syntax:
+const car = new Object();
+car.brand = "Toyota";
+car.model = "Camry";
+car.start = function() {
+    console.log("Car started");
+};
+
+console.log(car.brand);  // Output: Toyota
+car.start();             // Output: Car started
+
+3. Using a Constructor Function:
+function Student(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+const student1 = new Student("John", 20);
+console.log(student1.name);  // Output: John
+
+4. Using the class Keyword (ES6):
+class Animal {
+    constructor(type) {
+        this.type = type;
+    }
+
+    sound() {
+        console.log(this.type + " makes a sound");
+    }
+}
+
+const dog = new Animal("Dog");
+dog.sound();  // Output: Dog makes a sound
+
+
+📌 Array : What is an Array in JavaScript?
+- An array in JavaScript is a special type of object that is used to store multiple values in a single variable. 
+- Arrays are ordered collections, which means the values are stored at specific, numbered indexes starting from 0.
+- Array can contain multiple arrays,string , number, object
+
+const hobbies = ["Sports", "Cooking", "Reading"];
+console.log(hobbies[0]);  // Output: Sports
+
+hobbies.push("Working");
+console.log(hobbies);
