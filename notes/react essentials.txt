@@ -1,0 +1,24 @@
+Why Are Components Useful?
+🧩 Reusability:
+You can create a button once and use it everywhere without writing the same code again.
+
+🔍 Easy to Understand:
+If your code is divided into small pieces (components), it’s much easier to understand and work with.
+
+🔄 Easy to Update:
+If you want to change the header design, you only change it in one place, and it updates everywhere.
+
+🎯 Organized Code:
+Your code is cleaner and more organized. Each component does only one thing.
+
+⚙️ Better Performance:
+Only the components that need to update will change, not the whole page.
+
+
+
+📌 Understanding Files
+🔹index.html is responsible for diplaying content, and it contains index.jsx file
+🔹 index.jsx file importing App.jsx file
+🔹 App.jsx file contains all contents of our website
+
+📌Component Function -> must starts with uppercase Character and shoud have return statement
