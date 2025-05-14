@@ -1,4 +1,8 @@
-const combine = (a,b,c)=>{
-    return a*b/c;
-}
-combine(3,3,3);
+
+// if (password === "Hello") {
+//   console.log("Hello works");
+// } else if (password === "hello") {
+//   console.log("hello works");
+// } else {
+//   console.log("Access not granted.");
+// }

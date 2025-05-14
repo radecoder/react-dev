@@ -57,11 +57,11 @@
 // console.log(user1);
 // user1.greet();
 
-const hobbies = ["Sports", "Cooking", "Reading"];
-console.log(hobbies[0]);
+// const hobbies = ["Sports", "Cooking", "Reading"];
+// console.log(hobbies[0]);
 
-hobbies.push("Working");
-console.log(hobbies);
+// hobbies.push("Working");
+// console.log(hobbies);
 
 // const index = hobbies.findIndex((item) => item === "Sports");
 
@@ -139,9 +139,14 @@ console.log(hobbies);
 //   console.log("More timing out...");
 // }, 4000);
 
+// function greet(greetFn){
+//     greetFn();
+// }
+// greet(()=>console.log("Hey !"))
+
 // function init() {
 //   function greet() {
-//     console.log(“Hi!“);
+//     console.log("Hey !");
 //   }
 
 //   greet();
@@ -149,9 +154,9 @@ console.log(hobbies);
 
 // init();
 
-// const message = “Hello”;
+const message = "Hey !";
 
-// const hobbies = ["Sports", "Cooking"];
-// // hobbies = [];
-// hobbies.push("Working");
-// console.log(hobbies);
+const hobbies = ["Sports", "Cooking"];
+// hobbies = [];
+hobbies.push("Working");
+console.log(hobbies);

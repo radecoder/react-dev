@@ -314,5 +314,133 @@ dog.sound();  // Output: Dog makes a sound
 const hobbies = ["Sports", "Cooking", "Reading"];
 console.log(hobbies[0]);  // Output: Sports
 
-hobbies.push("Working");
-console.log(hobbies);
+🔹Array Methods
+1. hobbies.push("Working");
+   console.log(hobbies);    // Output:   [ 'Sports', 'Cooking', 'Reading', 'Working' ]
+
+2. const index = hobbies.findIndex((item) => item === "Sports");
+   console.log(index);   // Output: 0
+  
+3. Map method -> Creates a new array by applying a function to each element of an existing array.
+              Original array is not modified. we can create any kind of values, any objects, numbers, strings, boolean whatever we want.
+
+- const editedHobbies = hobbies.map((item) =>  item + " !" );
+  console.log(editedHobbies);   // Output for array: [ 'Sports !', 'Cooking !', 'Reading !', 'Working !' ]
+  
+- const editedHobbies = hobbies.map((item) => ({ text: item }));
+console.log(editedHobbies); 
+// Output for object:
+[
+  { text: 'Sports' },
+  { text: 'Cooking' },   
+  { text: 'Reading' },
+  { text: 'Working' }
+]
+
+📌 Destructuring of Array and Object
+
+🔹 normal way for array
+
+const userNameData = ["Max", "Schwarzmüller"];
+const firstName = userNameData[0];
+const lastName = userNameData[1];
+console.log(firstName);              // Output : Max
+console.log(lastName);                           Schwarzmüller
+
+After Destructuring
+const [firstName, lastName] = ["Max", "Schwarzmüller"];
+console.log(firstName);                                   // Output : Max
+console.log(lastName);                                                Schwarzmüller
+
+🔹 For Object
+const user = {
+  name: "Max",
+  age: 34
+};
+
+const name = user.name;
+const age = user.age;
+
+console.log(name);                                    // Output :   Max
+console.log(age);                                                   34
+
+
+After Destructuring
+const { name: userName, age } = {
+  name: "Max",
+  age: 34
+};
+
+console.log(userName);                              // Output :     Max
+console.log(age);                                                   34
+
+📌 Spread Operator : The spread operator (...) is used to expand elements of an array, object, or string into individual elements.
+
+1. Copying Arrays:
+const arr1 = [1, 2, 3];
+const arr2 = [...arr1];  // Creates a shallow copy of arr1
+console.log(arr2); // Output: [1, 2, 3]
+
+2. Merging Arrays:
+const arr1 = [1, 2];
+const arr2 = [3, 4];
+const merged = [...arr1, ...arr2];
+console.log(merged); // Output: [1, 2, 3, 4]
+
+3. Copying Objects:
+const user = { name: "Max",age: 34};
+
+const extendedUser = { isAdmin: true, ...user};
+console.log(extendedUser);                   // Output:    { isAdmin: true, name: 'Max', age: 34 }
+
+📌 Control Structures :
+🔹
+const password = prompt("Your password");
+if (password === "Hello") {
+  console.log("Hello works");
+} else if (password === "hello") {
+  console.log("hello works");
+} else {
+  console.log("Access not granted.");
+}
+
+🔹For Loop
+const hobbies = ["Sports", "Cooking"];
+
+for (const hobby of hobbies) {         
+  console.log(hobby);               // Output:   Sports
+}                                                Cooking
+
+📌 Function as Values to other function                                 
+
+1. Eg. 
+function handleTimeout() {
+  console.log("Timed out!");
+}
+
+const handleTimeout2 = () => {
+  console.log("Timed out ... again!");
+};
+
+setTimeout(handleTimeout, 2000);        // Output:   Timed out!
+setTimeout(handleTimeout2, 3000);                    Timed out ... again!
+                                                     More timing out...
+setTimeout(() => {
+  console.log("More timing out...");   // more convinent way
+}, 4000);
+
+2. Eg, 
+function greet(greetFn){
+    greetFn();
+}
+greet(()=>console.log("Hey!"));  // Output: Hey!
+
+📌 Defining Functions inside of function  
+Eg.
+function init() {
+  function greet() {
+    console.log("Hey !");     // Output: Hey !
+  }
+  greet();
+}
+init();
