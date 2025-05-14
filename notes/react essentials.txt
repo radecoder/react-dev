@@ -1,20 +1,11 @@
-Why Are Components Useful?
-🧩 Reusability:
-You can create a button once and use it everywhere without writing the same code again.
-
-🔍 Easy to Understand:
-If your code is divided into small pieces (components), it’s much easier to understand and work with.
-
-🔄 Easy to Update:
-If you want to change the header design, you only change it in one place, and it updates everywhere.
-
-🎯 Organized Code:
-Your code is cleaner and more organized. Each component does only one thing.
-
-⚙️ Better Performance:
-Only the components that need to update will change, not the whole page.
 
 
+📌 Why Are Components Useful?
+- Reusability: You can create a button once and use it everywhere without writing the same code again.
+- Easy to Understand: If your code is divided into small pieces (components), it’s much easier to understand and work with.
+- Easy to Update: If you want to change the header design, you only change it in one place, and it updates everywhere.
+- Organized Code: Your code is cleaner and more organized. Each component does only one thing.
+- Better Performance: Only the components that need to update will change, not the whole page.
 
 📌 Understanding Files
 🔹index.html is responsible for diplaying content, and it contains index.jsx file
@@ -32,6 +23,13 @@ Only the components that need to update will change, not the whole page.
    and are analyzed by React, and React combines all JSX code to generate overall DOM
 - these custom components are not showing in actual rendered DOM , there are default html elements like (<header></header>)
 
-📌Component -> are 2 types 1.Build-in Components  2. Custom Components
+📌Component -> A component is like a building block for web pages. You make it once and use it anywhere you want. 
+              It makes development faster and more organized. 
+These are 2 types 1.Build-in Components  2. Custom Components
 1.Build-in Components -> lower case like div , img 
 2. Custom Components -> UpperCase like App, Header, SideBar
+
+📌Props :
+- Props (short for "properties") are a way to pass data from one component to another, 
+- typically from a parent component to a child component. 
+- They are read-only and cannot be modified by the child component.
