@@ -18,7 +18,20 @@ Only the components that need to update will change, not the whole page.
 
 📌 Understanding Files
 🔹index.html is responsible for diplaying content, and it contains index.jsx file
-🔹 index.jsx file importing App.jsx file
+🔹 index.jsx file importing App.jsx file , and index.jsx file used App as JXS code (<App/>)
+   and this index.jsx file act as main entry point of our App
+   and createRoot and render method are responsible for rendring a single root component
 🔹 App.jsx file contains all contents of our website
 
 📌Component Function -> must starts with uppercase Character and shoud have return statement
+
+📌How React handles components ?
+- if we inspect our web we see index.html file,having script tag which have index.jsx that transformed into code that run in browser  
+- (see index.jsx) 
+- the App Component may contain many nested component as needed (App -> 1. Header 2. SideBar 3. Product 4. Footer)
+   and are analyzed by React, and React combines all JSX code to generate overall DOM
+- these custom components are not showing in actual rendered DOM , there are default html elements like (<header></header>)
+
+📌Component -> are 2 types 1.Build-in Components  2. Custom Components
+1.Build-in Components -> lower case like div , img 
+2. Custom Components -> UpperCase like App, Header, SideBar
