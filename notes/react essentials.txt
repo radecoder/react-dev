@@ -29,7 +29,120 @@ These are 2 types 1.Build-in Components  2. Custom Components
 1.Build-in Components -> lower case like div , img 
 2. Custom Components -> UpperCase like App, Header, SideBar
 
+📌Using-Outputting-Dynamic-Values
+
+import reactImg from './assets/react-core-concepts.png';     //🔹 dynamic image
+
+const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
+
+function genRandomInt(max) {
+  return Math.floor(Math.random() * (max + 1));
+}
+
+function Header() {
+  const description = reactDescriptions[genRandomInt(2)];     //🔹 dynamic contents
+
+  return (
+    <header>
+      <img src={reactImg} alt="Stylized atom" />
+      <h1>React Essentials</h1>
+      <p>
+        {description} React concepts you will need for almost any app you are
+        going to build!
+      </p>
+    </header>
+  );
+}
+
+function App() {
+  return (
+    <div>
+      <Header />
+      <main>
+        <h2>Time to get started!</h2>
+      </main>
+    </div>
+  );
+}
+
+export default App;
+
+
+
+
 📌Props :
 - Props (short for "properties") are a way to pass data from one component to another, 
 - typically from a parent component to a child component. 
 - They are read-only and cannot be modified by the child component.
+
+🔹 Different syntax of props:
+export default function CoreConcept({ image, title, description }) {
+  return(<li>
+    <img src={image} alt="..."/>
+    <h3>{title} </h3>
+    <p> {description}</p>
+  </li>
+  );
+}
+
+// or
+🔹
+// function CoreConcept(props){
+//   return(<li>
+//     <img src={props.image} alt="props.title"/>
+//     <h3>{props.title} </h3>
+//     <p> {props.description}</p>
+//   </li>
+//   );
+// }
+
+- In parent component
+<CoreConcept title={CORE_CONCEPTS[0].title} description={CORE_CONCEPTS[0].description} image={CORE_CONCEPTS[0].image} />
+<CoreConcept title={CORE_CONCEPTS[1].title} description={CORE_CONCEPTS[1].description} image={CORE_CONCEPTS[1].image} />
+            or we can write above
+<CoreConcept {...CORE_CONCEPTS[2]} />
+<CoreConcept {...CORE_CONCEPTS[3]} />
+
+🔹 export default function CoreConcept({ concept }){
+  return(
+  <li>
+    <img src={concept.image} alt={concept.title}/>
+    <h3>{concept.title} </h3>
+    <p> {concept.description}</p>
+  </li>
+  );
+}
+
+or we can write above
+
+🔹 export default function CoreConcept({ concept }) {
+  const { title, description, image } = concept;
+    return (
+   <li>
+      <img src={image} alt={title} />
+      <h3>{title}</h3>
+      <p>{description}</p>
+      
+     </li>
+  );
+}
+- In parent component
+ <CoreConcept concept={CORE_CONCEPTS[0]} />
+ <CoreConcept concept={CORE_CONCEPTS[1]} />
+ <CoreConcept concept={CORE_CONCEPTS[2]} />
+ <CoreConcept concept={CORE_CONCEPTS[3]} />
+ 
+📌 "children" prop vs "attribute props"
+ <TabButton>Components</TabButton
+ 
+ function TabButton({children}){
+   return <button>{children}</button>;
+ }
+ 
+ or attribute prop
+ 
+ <TabButton label="Component"></TabButton>
+ 
+ function TabButton({label}){
+   return <button>{label}</button>;
+ }
