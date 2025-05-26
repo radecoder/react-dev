@@ -68,25 +68,22 @@ function App() {
 export default App;
 
 
+📌importing in curly braces {}    vs    normal import
 
+1. if export default like this       export default function Header() {}
+   we import without curly braces    import Header from './components/Header.jsx';
+
+2. if it is named export like this for array of objects    export const CORE_CONCEPTS = [];
+     we import with curly braces                           import { CORE_CONCEPTS } from './data.js';
 
 📌Props :
 - Props (short for "properties") are a way to pass data from one component to another, 
 - typically from a parent component to a child component. 
 - They are read-only and cannot be modified by the child component.
+- here in below codes we have (image, title, description) as prop
 
 🔹 Different syntax of props:
-export default function CoreConcept({ image, title, description }) {
-  return(<li>
-    <img src={image} alt="..."/>
-    <h3>{title} </h3>
-    <p> {description}</p>
-  </li>
-  );
-}
 
-// or
-🔹
 // function CoreConcept(props){
 //   return(<li>
 //     <img src={props.image} alt="props.title"/>
@@ -96,12 +93,50 @@ export default function CoreConcept({ image, title, description }) {
 //   );
 // }
 
-- In parent component
-<CoreConcept title={CORE_CONCEPTS[0].title} description={CORE_CONCEPTS[0].description} image={CORE_CONCEPTS[0].image} />
-<CoreConcept title={CORE_CONCEPTS[1].title} description={CORE_CONCEPTS[1].description} image={CORE_CONCEPTS[1].image} />
-            or we can write above
-<CoreConcept {...CORE_CONCEPTS[2]} />
-<CoreConcept {...CORE_CONCEPTS[3]} />
+//          ---------- or more short using obj destructuring ----------------
+
+🔹
+//export default function CoreConcept({ image, title, description }) {
+  return(<li>
+    <img src={image} alt="..."/>
+    <h3>{title} </h3>
+    <p> {description}</p>
+  </li>
+  );
+}
+
+
+- In parent App component
+
+ <section id="core-concepts">
+          <h2>Core Concepts</h2>
+          <ul>
+            <CoreConcept
+              title="Components"
+              description="The core UI building block."
+              image={componentsImg}
+            />
+            <CoreConcept title="Props" />   //same for all
+            <CoreConcept />
+            <CoreConcept />
+          </ul>
+        </section>
+
+---------------- we move the blue data in data.js and write like this below in app component---------------------------------------------
+
+<CoreConcept title={CORE_CONCEPTS[0].title} 
+             description={CORE_CONCEPTS[0].description} 
+			 image={CORE_CONCEPTS[0].image} />
+<CoreConcept title={CORE_CONCEPTS[1].title} 
+             description={CORE_CONCEPTS[1].description} 
+			 image={CORE_CONCEPTS[1].image} />
+			 .
+			 .
+       -------  or we can write above-----
+<CoreConcept {...CORE_CONCEPTS[2]} />         // here we use spread operator to pull out all key value pairs of data.js as props
+<CoreConcept {...CORE_CONCEPTS[3]} />   
+
+📌 More Prop Syntaxes
 
 🔹 export default function CoreConcept({ concept }){
   return(
@@ -113,7 +148,7 @@ export default function CoreConcept({ image, title, description }) {
   );
 }
 
-or we can write above
+------------or we can write above code like this --------------------
 
 🔹 export default function CoreConcept({ concept }) {
   const { title, description, image } = concept;
