@@ -225,3 +225,105 @@ export default App;
         </article>
         );
 }
+
+-----------------------------------------------------------Section 4 Deep Dive--------------------------------
+
+📌   🧩React Fragments – In React, a Fragment lets you return multiple elements from a component without adding extra DOM nodes (like a <div>).
+📝 When to use Fragments:
+- To avoid extra wrapper <div>s.
+- When returning elements from .map() inside a list.
+- To preserve valid HTML structure (e.g., inside <table> where only <tr> or <td> is allowed).
+- example 
+import React from 'react';
+
+function Example() {
+  return (
+    <React.Fragment>
+      <h1>Hello</h1>
+      <p>This is a message</p>
+    </React.Fragment>
+  );
+}
+-----or-----
+function Example() {
+  return (
+    <>
+      <h1>Hello</h1>
+      <p>This is a message</p>
+    </>
+  );
+}
+
+--------------------More example of Fragments--------
+
+import React from 'react';
+function Summary({ text }) {
+  return (
+     <React.Fragment>
+      <h1>Summary</h1>
+      <p>{text}</p>
+     </React.Fragment>
+);
+}
+
+function App() {
+  return (
+    <div id="app" data-testid="app">
+      <Summary text="Fragments help you avoid unnecessary HTML elements." />
+    </div>
+  );
+}
+
+export default App;
+
+📌 What is Forwarding Props?
+   When you make a React component, sometimes it gets some information (called props) from its parent. 
+   If your component just wraps another component inside it, you usually want to send those props down 
+   to the inner component — that’s called forwarding props.
+
+export default function Section({ title, children, ...allOtherProps }) {
+  return (
+    <section {...allOtherProps}>
+      <h2>{title}</h2>
+      {children}
+    </section>
+  );
+}
+
+ <Section title="Examples" id='examples'>
+          <menu>
+            <TabButton isSelected={selectedTopic ==='components'} onClick={() => handleSelect('components')}>Components</TabButton>
+            <TabButton isSelected={selectedTopic ==='jsx'} onClick={() => handleSelect('jsx')}>JSX</TabButton>
+            <TabButton isSelected={selectedTopic ==='props'} onClick={() => handleSelect('props')}>Props</TabButton>
+            <TabButton isSelected={selectedTopic ==='state'} onClick={() => handleSelect('state')}>State</TabButton>
+          </menu>
+          {tabContent}
+ </Section>
+    );
+
+-   ...allOtherProps
+This uses JavaScript’s rest syntax to gather all the other props you didn’t explicitly name.
+
+If you pass <Section id="examples" className="section-class">, those extra props (id and className) are collected in this object.
+
+When you write <section {...allOtherProps}>, you forward all those extra props to the <section> HTML element, so the browser understands them.
+
+-   title
+This is a named prop.
+
+When you write <Section title="Examples">, the value "Examples" gets passed as the title prop.
+
+You use title inside the component to show a heading, like <h2>{title}</h2>.
+
+-  children
+This is a special prop in React.
+It represents everything you put between the opening and closing tags of a component.
+<Section title="Examples" id="examples">
+  <menu>...</menu>
+  {tabContent}
+</Section>
+
+The <menu> and {tabContent} are children.
+
+They get injected inside the Section component where you write {children}.	
+

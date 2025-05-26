@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { EXAMPLES } from "../data";
 import TabButton from "./TabButton";
+import Section from './Section.jsx';
+
 export default function Examples(){
-  
-        const [selectedTopic , setSelectedTopic] = useState();
+  const [selectedTopic , setSelectedTopic] = useState();
 
    function handleSelect(selectedButton) {
     // selectedButton =>z 'components', 'jsx', 'props', 'state'
     setSelectedTopic(selectedButton);
     // console.log(selectedTopic);
    }
-   console.log("app tabButton is renderring");
+  //  console.log("app tabButton is renderring");
 
    let tabContent =  <p>please select topic</p>;
    if (selectedTopic){
@@ -23,13 +24,12 @@ export default function Examples(){
           </div> );
    }    
      return(
-        <section id='examples'>
-          <h2>Examples</h2>
+        <Section title="Examples" id='examples'>
           <menu>
-            <TabButton isSelected={selectedTopic ==='components'} onSelect={() => handleSelect('components')}>Components</TabButton>
-            <TabButton isSelected={selectedTopic ==='jsx'} onSelect={() => handleSelect('jsx')}>JSX</TabButton>
-            <TabButton isSelected={selectedTopic ==='props'} onSelect={() => handleSelect('props')}>Props</TabButton>
-            <TabButton isSelected={selectedTopic ==='state'} onSelect={() => handleSelect('state')}>State</TabButton>
+            <TabButton isSelected={selectedTopic ==='components'} onClick={() => handleSelect('components')}>Components</TabButton>
+            <TabButton isSelected={selectedTopic ==='jsx'} onClick={() => handleSelect('jsx')}>JSX</TabButton>
+            <TabButton isSelected={selectedTopic ==='props'} onClick={() => handleSelect('props')}>Props</TabButton>
+            <TabButton isSelected={selectedTopic ==='state'} onClick={() => handleSelect('state')}>State</TabButton>
           </menu>
           {tabContent}
             {/* {!selectedTopic ? <p>please select topic</p> : null}
@@ -69,6 +69,6 @@ export default function Examples(){
           
           or see on top */}
           
-        </section>
+        </Section>
     );
 }

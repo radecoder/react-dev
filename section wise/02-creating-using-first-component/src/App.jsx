@@ -1,10 +1,7 @@
-import { Fragment, useState } from 'react';
-
+import { Fragment} from 'react';
 import Header from './components/Header/Header';
-
-import TabButton from './components/TabButton';
-import { EXAMPLES } from './data';
 import CoreConcepts from './components/CoreConcepts';
+import Examples from './components/Examples';
 
 function App() {
   
@@ -14,10 +11,9 @@ function App() {
       <Header />
       <main>
      <CoreConcepts/>
-        <EXAMPLES/>
+        <Examples/>
       </main>
-    </Fragment>
-    
+    </Fragment>    
   );
 }
 
