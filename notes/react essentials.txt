@@ -436,8 +436,8 @@ const MyComponent = ({ header, sidebar, content, footer }) => (
 📌 Settings component types dynamically in React
  for eg, button wrapper 
  <Tabs
-     ✅ buttonContainer = {Section}       // for custom components (as dynamic)
-	 ✅ buttonContainer = "menu"          // for build-in components    
+     ✅ ButtonContainer = {Section}       // for custom components (as dynamic)
+	 ✅ ButtonContainer = "menu"          // for build-in components    
         buttons={
           <>
             <TabButton
@@ -458,3 +458,25 @@ const MyComponent = ({ header, sidebar, content, footer }) => (
       >
         {tabContent}
   </Tabs>
+  
+📝Use it like:
+export default function Tabs({ children, buttons, ButtonsContainer }) {
+ //const ButtonsContainer = buttonsContainer;
+  return (
+    <>
+      <ButtonsContainer>{buttons}</ButtonsContainer>
+      {children}
+    </>
+  );
+}
+
+  📌 (OR More convenient way) Setting Default Prop Values
+  export default function Tabs({ children, buttons, ButtonsContainer = 'menu'  }) {
+  
+  return (
+    <>
+      <ButtonsContainer>{buttons}</ButtonsContainer>
+      {children}
+    </>
+  );
+}
