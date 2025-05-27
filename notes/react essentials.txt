@@ -347,16 +347,10 @@ They get injected inside the Section component where you write {children}.
 -------------------------------------------------------------------------------------
 
 📌 What are Multiple JSX Slots in React?
-  In React, multiple JSX slots refer to the ability to pass different sections of JSX content into a component through props, allowing flexible and reusable layouts.
-
-Unlike Vue (which has official "slot" syntax), React achieves this using:
-
-props.children → for the default slot
-
-Named props (e.g., header, buttons, footer) → for custom/named slots
-
-We are passing the buttons slot via the buttons prop.
-We are passing the tab content as the default children.
+  In React, multiple JSX slots refer to the ability to pass different sections of JSX content into a component through props, 
+  allowing flexible and reusable layouts.
+  React achieves this using: props.children → for the default slot
+                             Named props (e.g., header, buttons, footer) → for custom/named slots
 
   <Tabs
         buttons={
@@ -378,7 +372,10 @@ We are passing the tab content as the default children.
         }
       >
         {tabContent}
-      </Tabs>
+  </Tabs>
+We are passing the buttons slot via the buttons prop.
+We are passing the tab content as the default children.
+
 	  
 🔹 Inside the Tabs component:
   export default function Tabs({ children, buttons }) {
@@ -435,3 +432,29 @@ const MyComponent = ({ header, sidebar, content, footer }) => (
 );
 
 -----------------------------------------------------------------------
+
+📌 Settings component types dynamically in React
+ for eg, button wrapper 
+ <Tabs
+     ✅ buttonContainer = {Section}       // for custom components (as dynamic)
+	 ✅ buttonContainer = "menu"          // for build-in components    
+        buttons={
+          <>
+            <TabButton
+              isSelected={selectedTopic === 'components'}
+              onClick={() => handleSelect('components')}
+            >
+              Components
+            </TabButton>
+            <TabButton
+              isSelected={selectedTopic === 'jsx'}
+              onClick={() => handleSelect('jsx')}
+            >
+              JSX
+            </TabButton>
+            .......
+          </>
+        }
+      >
+        {tabContent}
+  </Tabs>
