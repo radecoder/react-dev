@@ -275,6 +275,8 @@ function App() {
 }
 export default App;
 
+--------------------------------------------------------------------------
+
 📌 What is Forwarding Props or Proxy prop?
 
  - When you make a React component, sometimes it gets some information (called props) from its parent. 
@@ -342,3 +344,94 @@ export default function CoreConcepts() {
 The <menu> and {tabContent} are children.
 They get injected inside the Section component where you write {children}.	
 
+-------------------------------------------------------------------------------------
+
+📌 What are Multiple JSX Slots in React?
+  In React, multiple JSX slots refer to the ability to pass different sections of JSX content into a component through props, allowing flexible and reusable layouts.
+
+Unlike Vue (which has official "slot" syntax), React achieves this using:
+
+props.children → for the default slot
+
+Named props (e.g., header, buttons, footer) → for custom/named slots
+
+We are passing the buttons slot via the buttons prop.
+We are passing the tab content as the default children.
+
+  <Tabs
+        buttons={
+          <>
+            <TabButton
+              isSelected={selectedTopic === 'components'}
+              onClick={() => handleSelect('components')}
+            >
+              Components
+            </TabButton>
+            <TabButton
+              isSelected={selectedTopic === 'jsx'}
+              onClick={() => handleSelect('jsx')}
+            >
+              JSX
+            </TabButton>
+            .......
+          </>
+        }
+      >
+        {tabContent}
+      </Tabs>
+	  
+🔹 Inside the Tabs component:
+  export default function Tabs({ children, buttons }) {
+  return (
+    <>
+      <menu>{buttons}</menu>   ← renders the "buttons" slot
+      {children}               ← renders the default "children" slot
+    </>
+  );
+ }
+
+💡 If You Wanted to Add a Third Slot (e.g., footer):
+Update the component:
+
+export default function Tabs({ children, buttons, footer }) {
+  return (
+    <>
+      <menu>{buttons}</menu>
+      <div>{children}</div>
+      <footer>{footer}</footer>
+    </>
+  );
+}
+
+📝Use it like:
+
+<Tabs
+  buttons={...}
+  footer={<p>End of tabs</p>}
+>
+  {tabContent}
+</Tabs>
+
+✅ How Many Slots Can You Have?
+As many as you want!
+For example:
+
+<MyComponent 
+  header={<Header />} 
+  sidebar={<Sidebar />} 
+  content={<Main />} 
+  footer={<Footer />}
+/>
+
+Then inside:
+
+const MyComponent = ({ header, sidebar, content, footer }) => (
+  <div>
+    <header>{header}</header>
+    <aside>{sidebar}</aside>
+    <main>{content}</main>
+    <footer>{footer}</footer>
+  </div>
+);
+
+-----------------------------------------------------------------------
