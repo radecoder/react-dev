@@ -1,4 +1,12 @@
 
+📌useState in React 
+   useState is a React Hook that lets you add state (data that can change) to functional components.
+🔧Syntax:
+const [state, setState] = useState(initialValue);
+
+state: current value
+setState: function to update the value✅
+initialValue: starting value (e.g., 0, "", [], null, etc.)
 
 📌 Why Are Components Useful?
 - Reusability: You can create a button once and use it everywhere without writing the same code again.
@@ -544,7 +552,7 @@ function App() {
       </section>
       <section id="draft">
         <Review student={name}/>         {/* 👈 State reflects in UI */}
-                                           //as in review prop we use student prop
+                                           //as in Review Component we use student prop
         <p>
           <button>Save</button>
         </p>
@@ -554,3 +562,84 @@ function App() {
 }
 
 export default App;
+
+-------------------------------------🧱 1. The Game Board Structure----------------------------
+📌export default function GameBoard() {
+  return (
+    <ol id="game-board">
+      {initialGameBoard.map((row, rowIndex) => (
+        <li key={rowIndex}>
+          <ol>
+            {row.map((playerSymbol, colIndex) => (
+              <li key={colIndex}>
+                <button>{playerSymbol}</button>
+              </li>
+            ))}
+          </ol>
+        </li>
+      ))}
+    </ol>
+  );
+}
+🧠 Breakdown:
+- The component renders the 3x3 grid using nested <ol> (ordered lists).
+- It loops through each row using map((row, rowIndex) => ...).
+- For each row, it creates another nested <ol> which contains:
+- A list of <li> items, each representing a cell in the row.
+- Inside each cell, a <button> displays the current value (null, "X", or "O").
+
+-------------------------------------------🧱Immutable Update Game Board ----------------------------
+📌Immutable Update
+To update a specific cell (e.g. row 1, col 2) in a React state object (2D array) without mutating the original state.
+
+So, instead of doing this ❌:
+prevGameBoard[rowIndex][colIndex] = 'X'; // ❌ MUTATES the original array
+
+We do this ✅:
+✅Immutable Update (Line-by-line):
+setGameBoard((prevGameBoard) => {
+  const updatedBoard = [...prevGameBoard.map(innerArray => [...innerArray])];
+  updatedBoard[rowIndex][colIndex] = 'X';
+  return updatedBoard;
+});
+
+What it does:
+1.prevGameBoard.map(innerArray => [...innerArray])
+  → Creates a deep copy of the 2D array.
+  → Each row is copied ([...innerArray]) so you don't accidentally mutate it.
+
+2.updatedBoard[rowIndex][colIndex] = 'X'
+  → Set the chosen square to 'X'.
+
+3.return updatedBoard
+  → Set the new board as state using setGameBoard.
+
+🖼 Output:
+Each button in the 3x3 grid will show 'X' when clicked, and React will re-render correctly.
+
+-------------------------------------------------------------------------------------------------
+
+📌Lifting State Up :
+   To the closest ancestor component(like App.js) that has access to all component that need to work with
+   that state
+ - Ancestor Component(like app component)- manages state value that's needed by both Child1 and Child2
+   because App Component can then pass the info to both Player.js and GameBoard.jsx Component via props
+ - Ancestor passes a function that eventually changes the state via props to the child component
+ - This allow the child component to initiate a state change.
+ 
+ 🤔 Why do we do it?
+- Sometimes, two or more child components need to:
+- Access the same state
+- Or communicate with each other via shared data
+
+But…
+🔹 Each child has its own isolated state → ❌ Not good for syncing
+🔹 So, we "lift" that state up to their common parent → ✅ Shared state!
+
+🧠 How It All Connects
+- App.jsx controls whose turn it is.
+- GameBoard uses activePlayerSymbol to place 'X' or 'O' on the board.
+ When a cell is clicked:
+- GameBoard updates the board with current player’s symbol.
+- Calls onSelectSquare, which toggles the player in App.
+- Player displays names and symbols, highlights active player, and allows name editing.
