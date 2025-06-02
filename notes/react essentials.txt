@@ -499,3 +499,29 @@ Note :
 "if(isEditing=== false)"  is same  "if(!isEditing)"   
 "isEditing ? false : true is same  (!isEditing)"
 ------------------------------------------------------------------------------------------
+📌Two way binding in React
+
+In React, two-way data binding means that:
+The UI reflects the state, and
+The state updates when the UI changes.
+
+In simpler terms:
+👉 When the input field changes, the state is updated,
+👉 And when the state changes, the input field updates.
+
+import { useState } from 'react';
+
+function TwoWayBindingExample() {
+  const [name, setName] = useState('');
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={name}              // 👈 Bound to state
+        onChange={(e) => setName(e.target.value)}  // 👈 Updates state on input change
+      />
+      <p>Hello, {name}!</p>       {/* 👈 State reflects in UI */}
+    </div>
+  );
+}
