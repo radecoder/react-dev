@@ -525,3 +525,32 @@ function TwoWayBindingExample() {
     </div>
   );
 }
+ 
+ ----------------------------OR exer 16 Two way binding -----------------------
+ 
+function App() {
+    const [name, setName] = useState("");
+    function handleNameChange(event){
+        setName(event.target.value)      // 👈 Updates state on input change
+    }
+  return (
+    <>
+      <section id="feedback">
+        <p>
+          <label>Your Name</label>
+          <input type="text" value={name}        // 👈 Bound to state
+          onChange={handleNameChange} />
+        </p>
+      </section>
+      <section id="draft">
+        <Review student={name}/>         {/* 👈 State reflects in UI */}
+                                           //as in review prop we use student prop
+        <p>
+          <button>Save</button>
+        </p>
+      </section>
+    </>
+  );
+}
+
+export default App;
