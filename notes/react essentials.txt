@@ -643,3 +643,7 @@ But…
 - GameBoard updates the board with current player’s symbol.
 - Calls onSelectSquare, which toggles the player in App.
 - Player displays names and symbols, highlights active player, and allows name editing.
+
+-----------------------------------------------------------------------------------------------------
+
+📌Avoid Interesting States
