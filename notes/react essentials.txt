@@ -648,6 +648,7 @@ But…
 
 📌Avoid Interesting States
 📌90 completed
-tomorrow target > 3 section atleast
 
-📌Refs and Portals 3 
+📌Refs and Portals completed 
+
+target() -> 5 section atleast till 14
